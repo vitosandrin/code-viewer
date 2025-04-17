@@ -24,6 +24,32 @@
         align-items: center;
         padding: 20px;
       }
+
+      .nav-container {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #2A2630;
+        border-radius: 8px;
+      }
+
+      .nav a {
+        color: #D946EF;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+      }
+
+      .nav a:hover {
+        background-color: #403E43;
+      }
       
       .container {
         max-width: 800px;
@@ -200,6 +226,13 @@
     </style>
   </head>
   <body>
+    <div class="nav-container">
+      <nav class="nav">
+        <a href="index.html">Code Viewer</a>
+        <a href="auth-generator.html">Auth Generator</a>
+      </nav>
+    </div>
+
     <div class="container">
       <div class="header">
         <h1 class="title">Code Viewer</h1>
