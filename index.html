@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Viewer</title>
+    <title>Visualizador de Secret</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
       /* Reset and base styles */
@@ -46,6 +46,14 @@
         padding: 8px 16px;
         border-radius: 6px;
         transition: background-color 0.2s;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav a i {
+        font-size: 14px;
       }
 
       .nav a:hover {
@@ -68,8 +76,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 16px 24px;
-        background-color: #403E43;
-        border-bottom: 1px solid #555555;
+        background-color: #2A2630;
+        border-bottom: 1px solid #3A3540;
       }
       
       .title {
@@ -135,8 +143,8 @@
       
       /* Code block */
       pre {
-        background-color: #333333;
-        border: 1px solid #555555;
+        background-color: #221F26;
+        border: 1px solid #3A3540;
         border-radius: 6px;
         overflow-x: auto;
         padding: 20px;
@@ -156,12 +164,13 @@
       
       .url-example {
         font-family: monospace;
-        background-color: #333333;
+        background-color: #221F26;
         padding: 4px 8px;
         border-radius: 4px;
         margin-top: 12px;
         display: inline-block;
         font-size: 14px;
+        border: 1px solid #3A3540;
       }
 
       /* Copy notification */
@@ -189,7 +198,7 @@
         text-align: center;
         color: #8E9196;
         font-size: 12px;
-        margin-top: 10px;
+        margin-top: 20px;
         padding: 10px;
       }
       
@@ -229,14 +238,14 @@
   <body>
     <div class="nav-container">
       <nav class="nav">
-        <a href="index.html"><i class="fas fa-code"></i> Code Viewer</a>
+        <a href="index.html"><i class="fas fa-lock"></i> Visualizador de Secret</a>
         <a href="auth.html"><i class="fas fa-key"></i> Gerador Auth</a>
       </nav>
     </div>
 
     <div class="container">
       <div class="header">
-        <h1 class="title">Code Viewer</h1>
+        <h1 class="title">Visualizador de Secret</h1>
         <div class="button-group">
           <button class="button" id="toggle-btn">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" id="eye-icon" viewBox="0 0 24 24">
@@ -250,7 +259,7 @@
               <line x1="2" x2="22" y1="2" y2="22"></line>
             </svg>
           </button>
-          <button class="button primary" id="copy-btn">Copy</button>
+          <button class="button primary" id="copy-btn">Copiar</button>
         </div>
       </div>
       
@@ -259,7 +268,7 @@
       </div>
       
       <div class="copy-notification" id="copy-notification">
-        Copied to clipboard!
+        Copiado para a área de transferência!
       </div>
     </div>
     
@@ -298,9 +307,9 @@
       } else {
         codeContainer.innerHTML = `
           <div class="empty-state">
-            <p>No code provided. Add code via URL parameter.</p>
-            <p>For example:</p>
-            <div class="url-example">localhost/?code=console.log("Hello world")</div>
+            <p>Nenhum secret fornecido. Adicione o secret via parâmetro de URL.</p>
+            <p>Por exemplo:</p>
+            <div class="url-example">localhost/?code=seu_secret_aqui</div>
           </div>
         `;
       }

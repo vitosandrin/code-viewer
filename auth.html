@@ -73,6 +73,8 @@
             font-weight: 600;
             color: #D946EF;
             margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #3A3540;
         }
 
         .form-group {
@@ -173,6 +175,7 @@
             word-break: break-all;
             font-family: 'Courier New', Courier, monospace;
             font-size: 14px;
+            border: 1px solid #3A3540;
         }
 
         .button-group {
@@ -215,7 +218,7 @@
 <body>
     <div class="nav-container">
         <nav class="nav">
-            <a href="index.html"><i class="fas fa-code"></i> Code Viewer</a>
+            <a href="index.html"><i class="fas fa-lock"></i> Visualizador de Secret</a>
             <a href="auth.html"><i class="fas fa-key"></i> Gerador Auth</a>
         </nav>
     </div>
@@ -224,17 +227,17 @@
         <h1>Gerador de Link Auth - Mercado Livre</h1>
         <div class="form-group">
             <label for="appId">
-                App ID:
+                ID da Aplicação:
                 <span class="tooltip">
                     <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">O App ID deve ser o mesmo configurado na sua aplicação do Mercado Livre</span>
+                    <span class="tooltip-text">O ID da Aplicação deve ser o mesmo configurado na sua aplicação do Mercado Livre</span>
                 </span>
             </label>
-            <input type="text" id="appId" placeholder="Digite seu App ID">
+            <input type="text" id="appId" placeholder="Digite o ID da sua aplicação">
         </div>
         <div class="form-group">
             <label for="uri">
-                Redirect URI:
+                URI de Redirecionamento:
                 <span class="tooltip">
                     <i class="fas fa-info-circle"></i>
                     <span class="tooltip-text">A URI de redirecionamento deve ser a mesma configurada na sua aplicação do Mercado Livre</span>
@@ -267,7 +270,7 @@
             const uri = document.getElementById('uri').value;
             
             if (!appId) {
-                alert('Por favor, insira o App ID');
+                alert('Por favor, insira o ID da aplicação');
                 return;
             }
 
