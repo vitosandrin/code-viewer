@@ -292,6 +292,9 @@
       // Display code or empty state
       if (code) {
         codeBlock.textContent = code;
+        codeContainer.classList.add('code-hidden');
+        eyeIcon.style.display = 'none';
+        eyeOffIcon.style.display = 'block';
       } else {
         codeContainer.innerHTML = `
           <div class="empty-state">

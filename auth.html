@@ -44,6 +44,14 @@
             padding: 8px 16px;
             border-radius: 6px;
             transition: background-color 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav a i {
+            font-size: 14px;
         }
 
         .nav a:hover {
@@ -58,14 +66,59 @@
             max-width: 800px;
         }
 
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #D946EF;
+            margin-bottom: 20px;
+        }
+
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
+            color: #F6F6F7;
+            font-size: 14px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 8px;
+            cursor: help;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: #221F26;
+            color: #F6F6F7;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid #3A3540;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip i {
             color: #D946EF;
+            font-size: 14px;
         }
 
         input {
@@ -75,16 +128,23 @@
             border-radius: 6px;
             background-color: #221F26;
             color: #F6F6F7;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         button {
             background-color: #D946EF;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         button:hover {
@@ -97,13 +157,44 @@
             background-color: #221F26;
             border-radius: 6px;
             word-break: break-all;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
         }
 
-        .copy-btn {
+        .button-group {
             margin-top: 10px;
             display: flex;
-            align-items: center;
             gap: 8px;
+        }
+
+        .copy-btn, .open-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn i, .open-btn i {
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: #8E9196;
+            font-size: 12px;
+            margin-top: 10px;
+            padding: 10px;
+        }
+        
+        .footer a {
+            color: #D946EF;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -118,21 +209,42 @@
     <div class="container">
         <h1>Gerador de Link Auth - Mercado Livre</h1>
         <div class="form-group">
-            <label for="appId">App ID:</label>
+            <label for="appId">
+                App ID:
+                <span class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">O App ID deve ser o mesmo configurado na sua aplicação do Mercado Livre</span>
+                </span>
+            </label>
             <input type="text" id="appId" placeholder="Digite seu App ID">
         </div>
         <div class="form-group">
-            <label for="uri">Redirect URI:</label>
+            <label for="uri">
+                Redirect URI:
+                <span class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">A URI de redirecionamento deve ser a mesma configurada na sua aplicação do Mercado Livre</span>
+                </span>
+            </label>
             <input type="text" id="uri" value="https://vitosandrin.github.io/code-viewer/" readonly>
         </div>
         <button onclick="generateAuthLink()">Gerar Link</button>
         
         <div class="result" id="result" style="display: none;">
             <p id="authLink"></p>
-            <button class="copy-btn" onclick="copyToClipboard()">
-                <i class="fas fa-copy"></i> Copiar Link
-            </button>
+            <div class="button-group">
+                <button class="copy-btn" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i> Copiar Link
+                </button>
+                <button class="open-btn" onclick="openAuthPage()">
+                    <i class="fas fa-external-link-alt"></i> Abrir Página
+                </button>
+            </div>
         </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Vito Sandrin | <a href="https://github.com/vitosandrin" target="_blank">GitHub</a>
     </div>
 
     <script>
@@ -156,6 +268,11 @@
             navigator.clipboard.writeText(authLink).then(() => {
                 alert('Link copiado para a área de transferência!');
             });
+        }
+
+        function openAuthPage() {
+            const authLink = document.getElementById('authLink').textContent;
+            window.open(authLink, '_blank');
         }
     </script>
 </body>
